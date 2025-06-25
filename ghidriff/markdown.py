@@ -776,7 +776,7 @@ pie showData
 
         # Create Slightly Modified secion
         # slightly as in no code changes but other relevant changes.
-        slight_mods = ['refcount', 'length', 'called', 'calling', 'name', 'fullname']
+        slight_mods = ['refcount', 'length', 'called', 'calling', 'name', 'fullname', 'address', 'sig', 'parent']
 
         md.new_header(1, 'Modified (No Code Changes)')
         md.new_paragraph(f"*Slightly modified functions have no code changes, rather differnces in:*")

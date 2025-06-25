@@ -1317,10 +1317,11 @@ class GhidraDiffEngine(GhidriffMarkdown, metaclass=ABCMeta):
         need_diff = False
 
         if not any(skip_type in match_types for skip_type in skip_types):
-            if func.body.numAddresses != func2.body.numAddresses:
-                need_diff = True
-            elif sym.referenceCount != sym2.referenceCount:
-                need_diff = True
+            # if func.body.numAddresses != func2.body.numAddresses:
+            #     need_diff = True
+            # elif sym.referenceCount != sym2.referenceCount:
+            #     need_diff = True
+            need_diff = True
 
         return need_diff
 
@@ -1613,7 +1614,7 @@ class GhidraDiffEngine(GhidriffMarkdown, metaclass=ABCMeta):
             only_code_diff = ''.join(list(difflib.unified_diff(old_code_no_sig, new_code_no_sig, lineterm='\n',
                                      fromfile=from_file_name, tofile=to_file_name)))  # ignores name changes
 
-            if len(only_code_diff) > 0 and (mnemonics_ratio < 1.0 or blocks_ratio < 1.0):
+            if len(only_code_diff) > 0 and (instructions_ratio < 1.0 or mnemonics_ratio < 1.0 or blocks_ratio < 1.0):
 
                 # handle bad match external match (sometimes occurs with implied matches)
                 if ratio == 0.0 and (blocks_ratio == 0.0):
